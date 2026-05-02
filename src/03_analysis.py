@@ -5,8 +5,6 @@ import pandas as pd
 import numpy as np
 import statsmodels.formula.api as smf
 import os
-import warnings
-warnings.filterwarnings('ignore')
 
 os.makedirs('output/tables', exist_ok=True)
 

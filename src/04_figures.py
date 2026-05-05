@@ -277,7 +277,7 @@ for country in ['Norway', 'China', 'United Kingdom', 'Germany', 'United States']
     country_merged = country_bev.merge(country_master[['Year', 'EV_Market_Share_Pct']], on='Year')
     for _, row in country_merged[country_merged['Year'] >= 2020].iterrows():
         print(f"    {int(row['Year'])}: total EV {row['EV_Market_Share_Pct']:.1f}% = BEV {row['Battery-electric']:.1f}% + PHEV {row['Plug-in hybrid']:.1f}%")
-        
+
 # figure 5: cumulative EV stocks on the road globally
 # it shows the total number of EVs actually being driven around the world
 
@@ -357,5 +357,64 @@ for country in ['Norway', 'China', 'United Kingdom', 'Germany', 'United States']
 print(f"\nglobal EV stocks:")
 last = global_stocks.iloc[-1]
 print(f"  {last['Stocks_Millions']:.1f} million EVs on the road in {int(last['Year'])}")
+
+# figure 6: regression scatter plot
+# visualises the OLS regression already run in 03_analysis.py
+
+print("  figure 6: regression scatter plot")
+
+# preparing the same data used in 03_analysis.py
+uk = ev_master[ev_master['Country'] == 'United Kingdom'].sort_values('Year')
+uk_trends = trends.copy()
+uk_trends['Year'] = pd.to_datetime(uk_trends['Date']).dt.year
+uk_annual = uk_trends.groupby('Year')['electric car'].mean().reset_index()
+uk_annual.columns = ['Year', 'Search_Interest']
+uk_annual['Search_Interest_Lag1'] = uk_annual['Search_Interest'].shift(1)
+
+reg_data = uk[['Year', 'EV_Market_Share_Pct']].merge(
+    uk_annual[['Year', 'Search_Interest_Lag1']], on='Year'
+).dropna()
+
+fig, ax = plt.subplots(figsize=(9, 6))
+
+# scatter points
+ax.scatter(
+    reg_data['Search_Interest_Lag1'],
+    reg_data['EV_Market_Share_Pct'],
+    color='#1B5FAA',
+    s=100,
+    zorder=5
+)
+
+# year labels 
+for _, row in reg_data.iterrows():
+    ax.annotate(
+        str(int(row['Year'])),
+        xy=(row['Search_Interest_Lag1'], row['EV_Market_Share_Pct']),
+        xytext=(5, 5),
+        textcoords='offset points',
+        fontsize=9,
+        color='#1B5FAA'
+    )
+
+# regression line using coefficients from 03_analysis.py
+# intercept = -2.2791, coefficient = 0.8707
+x_line = np.linspace(reg_data['Search_Interest_Lag1'].min(), reg_data['Search_Interest_Lag1'].max(), 100)
+y_line = -2.2791 + 0.8707 * x_line
+ax.plot(x_line, y_line, color='#FF8C00', linewidth=2, linestyle='--')
+
+ax.set_title('Does Search Interest Predict EV Adoption?\nLagged Google Search Interest vs UK EV Market Share', pad=15)
+ax.set_xlabel('Google Search Interest for "Electric Car" (Previous Year)')
+ax.set_ylabel('UK EV Market Share (% of new car sales)')
+ax.text(
+    0.01, -0.15,
+    'Source: Google Trends; IEA Global EV Outlook 2025. Regression coefficients from OLS model in 03_analysis.py. R²=0.791, p=0.018.',
+    transform=ax.transAxes, fontsize=8, color='grey'
+)
+
+plt.tight_layout()
+plt.savefig('output/figures/fig6_regression.png', dpi=150, bbox_inches='tight')
+plt.close()
+print(" saved fig6_regression.png")
 
 print("\nall figures saved to output/figures/")

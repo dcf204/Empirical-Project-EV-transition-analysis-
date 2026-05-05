@@ -214,6 +214,15 @@ plt.savefig('output/figures/fig3_ev_market_share.png', dpi=150, bbox_inches='tig
 plt.close()
 print("  saved fig3_ev_market_share.png")
 
+# printing key numbers from figure 3 for blog writing
+print("\nfigure 3 key numbers (EV market share by country, most recent year):")
+for country in ['Norway', 'China', 'United Kingdom', 'Germany', 'United States']:
+    d = ev_master[ev_master['Country'] == country].dropna(subset=['EV_Market_Share_Pct'])
+    if len(d) > 0:
+        latest = d.sort_values('Year').iloc[-1]
+        print(f"  {country}: {latest['EV_Market_Share_Pct']:.1f}% ({int(latest['Year'])})")
+
+
 # figure 4: BEV vs PHEV breakdownn energy transition
 # plug-in hybrids still burn petrol so they should not be treated as a full clea
 # EV figure is genuinely fully electric vs still partially fossil fuel
@@ -259,6 +268,16 @@ plt.savefig('output/figures/fig4_bev_vs_phev.png', dpi=150, bbox_inches='tight')
 plt.close()
 print("  saved fig4_bev_vs_phev.png")
 
+# BEV vs PHEV breakdown for all figure 3 countries
+print("\nBEV vs PHEV breakdown for figure 3 countries (2020-2024):")
+for country in ['Norway', 'China', 'United Kingdom', 'Germany', 'United States']:
+    print(f"\n  {country}:")
+    country_bev = bev_phev[bev_phev['Country'] == country].sort_values('Year')
+    country_master = ev_master[ev_master['Country'] == country].sort_values('Year')
+    country_merged = country_bev.merge(country_master[['Year', 'EV_Market_Share_Pct']], on='Year')
+    for _, row in country_merged[country_merged['Year'] >= 2020].iterrows():
+        print(f"    {int(row['Year'])}: total EV {row['EV_Market_Share_Pct']:.1f}% = BEV {row['Battery-electric']:.1f}% + PHEV {row['Plug-in hybrid']:.1f}%")
+        
 # figure 5: cumulative EV stocks on the road globally
 # it shows the total number of EVs actually being driven around the world
 

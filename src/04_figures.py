@@ -268,6 +268,19 @@ plt.savefig('output/figures/fig4_bev_vs_phev.png', dpi=150, bbox_inches='tight')
 plt.close()
 print("  saved fig4_bev_vs_phev.png")
 
+# defining variables for growth rate calculations
+bev_2020 = global_split[global_split['Year'] == 2020]['Battery-electric'].values[0]
+bev_2024 = global_split[global_split['Year'] == 2024]['Battery-electric'].values[0]
+phev_2020 = global_split[global_split['Year'] == 2020]['Plug-in hybrid'].values[0]
+phev_2023 = global_split[global_split['Year'] == 2023]['Plug-in hybrid'].values[0]
+phev_2024 = global_split[global_split['Year'] == 2024]['Plug-in hybrid'].values[0]
+
+# global growth rates 2020 to 2024 for BEVs and PHEVS
+print(f"\nfigure 4 key numbers (global average across all reporting countries):")
+print(f"  BEV 2020: {bev_2020:.2f}% -> 2024: {bev_2024:.2f}% | growth: {((bev_2024 - bev_2020) / bev_2020) * 100:.1f}%")
+print(f"  PHEV 2020: {phev_2020:.2f}% -> 2024: {phev_2024:.2f}% | growth: {((phev_2024 - phev_2020) / phev_2020) * 100:.1f}%")
+print(f"  PHEV 2023: {phev_2023:.2f}% -> 2024: {phev_2024:.2f}% | growth: {((phev_2024 - phev_2023) / phev_2023) * 100:.1f}%")
+
 # BEV vs PHEV breakdown for all figure 3 countries
 print("\nBEV vs PHEV breakdown for figure 3 countries (2020-2024):")
 for country in ['Norway', 'China', 'United Kingdom', 'Germany', 'United States']:

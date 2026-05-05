@@ -348,6 +348,11 @@ plt.savefig('output/figures/fig5_ev_stocks_global.png', dpi=150, bbox_inches='ti
 plt.close()
 print("  saved fig5_ev_stocks_global.png")
 
+# printing the global EV stock number for blog writing 
+df = pd.read_csv('data/clean/ev_master_clean.csv')
+ev_stock_totals = df.groupby('Year')['Electric car stocks'].sum()
+print(ev_stock_totals[ev_stock_totals.index >= 2013])
+
 # printing key numbers for writing the blog
 print("\nkey numbers for the blog:")
 

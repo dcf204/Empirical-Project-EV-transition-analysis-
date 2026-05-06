@@ -12,19 +12,23 @@ Germany, and the United States. A key distinction is made between fully electric
 vehicles (BEV) and plug-in hybrids (PHEV). The blog also aims to explain the differences across economies, diving into the transition gap and why it exists. Finally, a simple OLS regression is conducted to understand whether UK consumer search interest is a predictive measure of EVs sales the following year. 
 
 ## Repository Structure
+
+```
 Empirical-Project-EV-transition-analysis-/
 ├── data/
-│   ├── raw/           # original downloaded data, never modified
-│   └── clean/         # processed datasets ready for analysis
-├── scripts/
-│   ├── 01_scrape.py   # collects data from Google Trends, Yahoo Finance and Our World in Data
-│   ├── 02_clean.py    # cleans and processes all raw datasets
-│   ├── 03_analysis.py # runs OLS regression and saves results
-│   ├── 04_figures.py  # generates all 6 figures
-│   └── runAll.py      # runs the full pipeline in one command
+│   ├── raw/              # Raw data
+│   └── clean/            # Cleaned and processed datasets ready for analysis
 ├── outputs/
-│   ├── figures/       # all 6 generated plots
-│   └── tables/        #regression results
-├── Makefile           # run entire pipeline with make all
-├── requirements.txt   # all package dependencies
-└── README.md
+│   ├── figures/          # All 6 generated plots (PNG)
+│   └── tables/           # Regression results (TXT)
+├── scripts/
+│   ├── 01_scrape.py      # Collects data from Google Trends, Yahoo Finance etc
+│   ├── 02_clean.py       # Cleans, validates and merges all raw datasets
+│   ├── 03_analysis.py    # Runs OLS regression, saves results to outputs/tables/
+│   ├── 04_figures.py     # Generates all 6 figures, saves to outputs/figures/
+│   └── runAll.py         # Runs the full pipeline in sequence
+├── .gitignore            # Excludes venv, pycache and raw data files
+├── Makefile              # Run entire pipeline with: make all
+├── README.md             # Project documentation
+└── requirements.txt      # Python dependencies
+```

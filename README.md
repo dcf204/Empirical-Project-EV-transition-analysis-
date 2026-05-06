@@ -58,9 +58,6 @@ python scripts/02_clean.py
 python scripts/03_analysis.py
 python scripts/04_figures.py
 ```
-5. View the blog
-Open `blog.html` in your browser, or visit the live version at:
-https://dcf204.github.io/Empirical-Project-EV-transition-analysis-/blog.html
 
 **Note:** Google Trends may occasionally rate limit requests, the scraper will automatically retry up to 3 times.
 

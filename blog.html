@@ -10,7 +10,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
     <!-- styling for the whole page - green and beige theme -->
     <style>
-
+/* reading progress bar at the top */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            width: 0%;
+            background-color: #2d6a4f;
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
         /* reset default browser margins and set base font */
         * {
             margin: 0;
@@ -175,6 +185,8 @@
 
 </head>
 <body>
+<!-- reading progress bar -->
+    <div id="progress-bar"></div>
 
     <!-- header section with title, subtitle and  my student info -->
     <header>
@@ -321,5 +333,14 @@
             </ul>
         </div>
 </main>
+<!-- progress bar script - tracks how far down the page you are -->
+    <script>
+        window.addEventListener('scroll', function() {
+            var scrollTop = window.scrollY;
+            var docHeight = document.body.scrollHeight - window.innerHeight;
+            var progress = (scrollTop / docHeight) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+        });
+    </script>
 </body>
 </html>

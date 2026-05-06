@@ -291,8 +291,20 @@
  <p>Figure 5, shows an exponential curve, where globally, there are 56.9 million EVs on the road as of 2024. At a glance, this figure clearly indicates that the transition is a reality. However when taking a closer look, a concentration of EVs is revealed. </p>
  <p>In the Western world, the adoption of EVs has been predominantly driven by higher-income households and economies. A study published in the World Electric Vehicle Journal (2026), found that access to EVs is often clustered in wealthier areas and the deployment is concentrated in higher-income economies. This bias is also seen in EV incentives. In the US 90% of tax credits have been captured by the top income quintile (Maglicic et al ., 2025). More interestingly studies found that EV adoption beyond high income countries is actually associated with higher CO2 emissions, due to inefficient electricity grids that increase fossil fuel demand (Acheampong, 2026). Therefore, the 56.9 million figure should be interpreted with caution, as it reflects a transition that is economically and geographically concentrated.</p>
 <p> The transition gap is most pronounced when comparing the US and China. As reflected in Figure 3, China had 11.3 million new EV sales in 2024 (48% EV market share), while the US had 1.52 million (10% EV market share). Beyond government policy, differences in pricing structures play a huge role in explaining this disparity. In China, the average BEV costs around $25,000, which is cheaper than an ICE model (internal combustion engine). In contrast, EVs in the US carry a $14,000 premium over ICE cars (Roytburg, 2025). Naturally, this also helps explain the 10% EV market share in the US vs the 48% in China. However this, distinction is key when interpreting Figure 5. As the exponential curve is clearly being driven by price dynamics. Where EV adoption is pricing out lower-income individuals in the Western world and government subsidies are reinforcing this. As a result the absolute number of EVs on the road may be increasing, but true transition will not be achieved until price parity is achieved across Western markets.</p>
+      </section>
 
-        </section>
+<!-- section 6: statistical test-->
+        <section id="statistical test">
+            <h2>Does Search Interest Predict Real Adoption? A statistical Test. </h2>
+<!-- figure 6 - regression plot -->
+            <figure>
+                <img src="outputs/figures/fig6_regression.png" alt="OLS Regression lagged search interest vs UK EV market share">
+                <figcaption>Figure 6: OLS regression, testing whether search interest is a predictive measure of how many EVs were sold the following year.</figcaption>
+                <figcaption> This regression uses only six data points. So findings should be interpreted as indicative rather than conclusive.</figcaption>
+            </figure>
+
+<p>A simple OLS regression was run using UK Google search data for "Electric car" from 2019 to 2024 lagged by one year, to analyse whether the UK EV market share was affected.</p>
+<p>The adjusted R² of 0.74, suggests that the amount of interest in EVs explained around three quarters of the variation in the actual EV UK market share the next year. The results are statistically significant at a 5% significance level (p=0.018) and the coefficient of 0.84 suggest that increases in search interest is associated with a nearly proportional increase in market share the following year.</p>
 </main>
 </body>
 </html>

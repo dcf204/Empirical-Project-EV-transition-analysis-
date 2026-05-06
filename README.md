@@ -105,7 +105,7 @@ See  `requirements.txt`
 | | `Net Income_Billions` | float | Annual net income in billions (local currency) |
 | | `Revenue_Growth_Pct` | float | Year-on-year revenue growth rate (%) |
 | `ev_master_clean.csv` | `Country` | str | Country name |
-| | `Country_Code` | str | ISO 3-letter country code |
+| | `Country_Code` | str | 3-letter country code |
 | | `Year` | int | Calendar year |
 | | `Electric cars sold` | float | Absolute number of new EVs sold that year |
 | | `Electric cars` | float | EV share of new car sales (%) |

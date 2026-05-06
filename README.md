@@ -1,7 +1,7 @@
 # Empirical Project: EV Transition Analysis
 **Is the electric vehicle transition driven by real consumer demand, or industry hype?**
 
-Live Blog: https://hackmd.io/@dcf204/SyVvreS0Zx
+Live Blog: https://dcf204.github.io/Empirical-Project-EV-transition-analysis-/
 
 ## Overview
 This project investigates whether the EV transition is driven by genuine consumer 

@@ -32,3 +32,11 @@ Empirical-Project-EV-transition-analysis-/
 ├── README.md             # Project documentation
 └── requirements.txt      # Python dependencies
 ```
+# Replication
+
+### Full pipeline (downloads all data fresh)
+```bash
+pip install -r requirements.txt
+make all
+```
+This runs: download, clean, analysis, figures in sequence.

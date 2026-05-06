@@ -180,13 +180,47 @@
                 padding: 0 16px 60px;
             }
         }
+/* lightbox darkened overlay when image is clicked */
+        #lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 9999;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
 
+        #lightbox.active {
+            display: flex;
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 6px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        /* cursor so user knows images are clickable */
+        figure img {
+            cursor: zoom-in;
+        }
     </style>
 
 </head>
 <body>
 <!-- reading progress bar -->
     <div id="progress-bar"></div>
+
+    <!-- lightbox overlay for clicking on graphs to make them big -->
+    <div id="lightbox">
+        <img id="lightbox-img" src="" alt="">
+    </div>
 
     <!-- header section with title, subtitle and  my student info -->
     <header>
@@ -333,7 +367,7 @@
             </ul>
         </div>
 </main>
-<!-- progress bar script - tracks how far down the page you are -->
+<!-- progress bar script to tracks how far down the page you are -->
     <script>
         window.addEventListener('scroll', function() {
             var scrollTop = window.scrollY;
@@ -341,6 +375,19 @@
             var progress = (scrollTop / docHeight) * 100;
             document.getElementById('progress-bar').style.width = progress + '%';
         });
+// lightbox clicking a figure image opens it fullscreen
+        document.querySelectorAll('figure img').forEach(function(img) {
+            img.addEventListener('click', function() {
+                document.getElementById('lightbox-img').src = this.src;
+                document.getElementById('lightbox').classList.add('active');
+            });
+        });
+
+        // clicking the overlay closes it
+        document.getElementById('lightbox').addEventListener('click', function() {
+            this.classList.remove('active');
+        });
+        
     </script>
 </body>
 </html>

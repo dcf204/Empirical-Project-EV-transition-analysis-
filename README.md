@@ -37,3 +37,11 @@ This runs the full pipeline in sequence: download → clean → analysis → fig
 Requires Python 3.10+ and pip installed on your system. The download step requires an internet connection to fetch data from Google Trends, Yahoo Finance, and Our World in Data. Note: Google Trends may occasionally rate limit requests, the scraper will automatically retry up to 3 times with increasing wait times.
 
 Run `make clean` to wipe all generated files and start fresh.
+
+## Requirements
+Requires Python 3.10+, pip, and the following packages (all installable via `pip install`):
+See  `r requirements.txt`
+- `pandas`, `numpy`, `matplotlib`, `scipy`, `statsmodels` for data processing and analysis
+- `pytrends` — Google Trends 
+- `yfinance` — Yahoo Finance stock price data
+- `requests` — HTTP requests for Our World in Data downloads

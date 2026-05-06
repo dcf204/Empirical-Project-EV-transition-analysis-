@@ -45,3 +45,12 @@ See  `r requirements.txt`
 - `pytrends`  Google Trends 
 - `yfinance` Yahoo Finance stock price data
 - `requests`  HTTP requests for Our World in Data downloads
+
+## Data Sources
+
+| Dataset | Source | Details |
+|---|---|---|
+| UK Google Trends | [Google Trends](https://trends.google.com) via pytrends | Monthly search interest for 'electric car', 'Tesla', 'EV charging', 'hybrid car' — UK only, 2018–2024 |
+| Company Stock Prices | [Yahoo Finance](https://finance.yahoo.com) via yfinance | Daily closing prices for Tesla (TSLA), Volkswagen (VWAGY), BYD (BYDDY), 2018–2024 |
+| Company Financials | [Yahoo Finance](https://finance.yahoo.com) via yfinance | Annual revenue, gross profit and net income for Tesla, VW, BYD |
+| EV Sales & Adoption | [Our World in Data](https://ourworldindata.org) | IEA Global EV Outlook 2025 — BEV vs PHEV breakdown, absolute sales, market share, EV stocks on road |

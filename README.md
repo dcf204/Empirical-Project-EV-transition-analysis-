@@ -115,9 +115,9 @@ See  `requirements.txt`
 | | `Electric car stocks` | float | Total EVs on the road (cumulative) |
 | | `EV_Market_Share_Pct` | float | Calculated EV market share as % of total new car sales |
 
-All Google Trends values are relative search indices, 100 = peak interest in the UK over the 2018–2024 period. 
-Stock prices are in each company's local trading currency and are not cross-currency comparable in raw form, use `Close_Norm_Mean` for comparisons.
-Financials are similarly in local currency, use `Revenue_Growth_Pct` for cross-company comparisons.
+> All Google Trends values are relative search indices, 100 = peak interest in the UK over the 2018–2024 period. 
+> Stock prices are in each company's local trading currency and are not cross-currency comparable in raw form, use `Close_Norm_Mean` for comparisons.
+> Financials are similarly in local currency, use `Revenue_Growth_Pct` for cross-company comparisons.
 
 
 ## Outputs

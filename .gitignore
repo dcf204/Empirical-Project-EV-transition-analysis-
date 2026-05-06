@@ -1,0 +1,19 @@
+# Editor settings
+.vscode/
+
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Data files (raw data shouldn't be in git if large)
+data/raw/
+
+# Environment variables
+.env

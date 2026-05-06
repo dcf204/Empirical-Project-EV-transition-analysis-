@@ -28,50 +28,44 @@ print("starting data collection")
 # using google trends as a proxy for consumer interest in EVs
 # it gives a score from 0-100 showing how often people search for something
 
-
 print("\ngoogle trends data for the UK")
 
-try:
-    # connecting to google trends
-    pytrends = TrendReq(hl='en-GB', tz=0)
+# adding retries with longer waits to handle google rate limiting (429 errors)
+max_retries = 3
+for attempt in range(max_retries):
+    try:
+        pytrends = TrendReq(hl='en-GB', tz=0)
+        keywords = ['electric car', 'hybrid car', 'EV charging', 'Tesla']
 
-    # these keywords capture different types of consumer interest
-    # electric car = general interest in fully electric vehicles
-    # hybrid car = interest in hybrid/part electric vehicles for comparison
-    # EV charging = practical search, suggests someone is actually considering buying
-    # Tesla = brand level interest, most recognisable EV company globally
-    keywords = ['electric car', 'hybrid car', 'EV charging', 'Tesla']
+        pytrends.build_payload(
+            keywords,
+            timeframe='2018-01-01 2024-12-31',
+            geo='GB'
+        )
 
-    # pulling monthly UK data from 2018 to 2024
-    # 2018 is the starting point asthats when EV interest started accelerating
-    pytrends.build_payload(
-        keywords,
-        timeframe='2018-01-01 2024-12-31',
-        geo='GB'
-    )
+        google_data = pytrends.interest_over_time()
 
-    google_data = pytrends.interest_over_time()
+        if 'isPartial' in google_data.columns:
+            google_data = google_data.drop(columns=['isPartial'])
 
-    # google adds an isPartial column to flag incomplete periods - not useful
-    if 'isPartial' in google_data.columns:
-        google_data = google_data.drop(columns=['isPartial'])
+        google_data = google_data.reset_index()
+        google_data = google_data.rename(columns={'date': 'Date'})
 
-    # making date a proper column instead of the index
-    google_data = google_data.reset_index()
-    google_data = google_data.rename(columns={'date': 'Date'})
+        print(f"collected {len(google_data)} months of search data")
+        google_data.to_csv('data/raw/google_trends.csv', index=False)
+        print("saved to data/raw/google_trends.csv")
+        break
 
-    print(f"collected {len(google_data)} months of search data")
-    print(f"columns: {list(google_data.columns)}")
-    print(google_data.head())
+    except Exception as e:
+        if attempt < max_retries - 1:
+            wait_time = 60 * (attempt + 1)
+            print(f"rate limited, waiting {wait_time}s before retry {attempt + 2}/{max_retries}")
+            time.sleep(wait_time)
+        else:
+            print(f"google trends failed after {max_retries} attempts: {e}")
 
-    google_data.to_csv('data/raw/google_trends.csv', index=False)
-    print("saved to data/raw/google_trends.csv")
-
-except Exception as e:
-    print(f"something went wrong with google trends: {e}")
-
-# waiting so google doesnt block the request
 time.sleep(2)
+
 
 # PART 2: COMPANY STOCK PRICES
 # stock prices for three companies representing different positions in the EV market

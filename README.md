@@ -30,6 +30,7 @@ Empirical-Project-EV-transition-analysis-/
 ├── Makefile              # Run entire pipeline with: make all
 ├── README.md             # Project documentation
 └── requirements.txt      # Python dependencies
+```
 
 This runs the full pipeline in sequence: download → clean → analysis → figures.
 

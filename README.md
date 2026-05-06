@@ -11,6 +11,38 @@ prices, and real-world EV adoption across five countries: Norway, China, the UK,
 Germany, and the United States. A key distinction is made between fully electric 
 vehicles (BEV) and plug-in hybrids (PHEV). The blog also aims to explain the differences across economies, diving into the transition gap and why it exists. Finally, a simple OLS regression is conducted to understand whether UK consumer search interest is a predictive measure of EVs sales the following year. 
 
+## How to Replicate
+1. Clone the repository
+```bash
+git clone https://github.com/dcf204/Empirical-Project-EV-transition-analysis-
+cd Empirical-Project-EV-transition-analysis-
+```
+2. Create and activate a virtual environment
+```bash
+python3 -m venv venv
+source venv/bin/activate  # on Windows: venv\Scripts\activate
+```
+3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+4. Run the full pipeline
+```bash
+make all
+```
+Or run scripts individually in order:
+```bash
+python scripts/01_scrape.py
+python scripts/02_clean.py
+python scripts/03_analysis.py
+python scripts/04_figures.py
+```
+5. View the blog
+Open `blog.html` in your browser, or visit the live version at:
+https://dcf204.github.io/Empirical-Project-EV-transition-analysis-/blog.html
+
+**Note:** Google Trends may occasionally rate limit requests, the scraper will automatically retry up to 3 times.
+
 ## Repository Structure
 ```
 Empirical-Project-EV-transition-analysis-/
@@ -32,12 +64,6 @@ Empirical-Project-EV-transition-analysis-/
 ├── blog.html             # complete script for live blog
 └── requirements.txt      # Python dependencies
 ```
-
-This runs the full pipeline in sequence: download → clean → analysis → figures.
-
-Requires Python 3.10+ and pip installed on your system. The download step requires an internet connection to fetch data from Google Trends, Yahoo Finance, and Our World in Data. Note: Google Trends may occasionally rate limit requests, the scraper will automatically retry up to 3 times with increasing wait times.
-
-Run `make clean` to wipe all generated files and start fresh.
 
 ## Requirements
 Requires Python 3.10+, pip, and the following packages (all installable via `pip install`):

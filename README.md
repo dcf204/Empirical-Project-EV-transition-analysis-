@@ -12,7 +12,6 @@ Germany, and the United States. A key distinction is made between fully electric
 vehicles (BEV) and plug-in hybrids (PHEV). The blog also aims to explain the differences across economies, diving into the transition gap and why it exists. Finally, a simple OLS regression is conducted to understand whether UK consumer search interest is a predictive measure of EVs sales the following year. 
 
 ## Repository Structure
-
 ```
 Empirical-Project-EV-transition-analysis-/
 ├── data/
@@ -31,12 +30,9 @@ Empirical-Project-EV-transition-analysis-/
 ├── Makefile              # Run entire pipeline with: make all
 ├── README.md             # Project documentation
 └── requirements.txt      # Python dependencies
-```
-# Replication
 
-### Full pipeline (downloads all data fresh)
-```bash
-pip install -r requirements.txt
-make all
-```
-This runs: download, clean, analysis, figures in sequence.
+This runs the full pipeline in sequence: download → clean → analysis → figures.
+
+Requires Python 3.10+ and pip installed on your system. The download step requires an internet connection to fetch data from Google Trends, Yahoo Finance, and Our World in Data. Note: Google Trends may occasionally rate limit requests, the scraper will automatically retry up to 3 times with increasing wait times.
+
+Run `make clean` to wipe all generated files and start fresh.

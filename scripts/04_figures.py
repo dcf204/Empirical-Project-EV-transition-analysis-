@@ -1,5 +1,5 @@
 # produces all 5 figures for the EV transition blog post
-# figures saved to output/figures/:
+# figures saved to outputs/figures/:
 #   fig1_uk_google_trends.png     - UK search interest 2018-2024
 #   fig2_stock_prices.png         - normalised stock prices tesla/vw/byd
 #   fig3_ev_market_share.png      - EV market share by country
@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import os
 
-os.makedirs('output/figures', exist_ok=True)
+os.makedirs('outputs/figures', exist_ok=True)
 
 print("loading cleaned data for figures")
 
@@ -116,7 +116,7 @@ ax.text(
 )
 
 plt.tight_layout()
-plt.savefig('output/figures/fig1_uk_google_trends.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/figures/fig1_uk_google_trends.png', dpi=150, bbox_inches='tight')
 plt.close()
 print("  saved fig1_uk_google_trends.png")
 
@@ -168,7 +168,7 @@ ax.text(
 )
 
 plt.tight_layout()
-plt.savefig('output/figures/fig2_stock_prices.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/figures/fig2_stock_prices.png', dpi=150, bbox_inches='tight')
 plt.close()
 print("  saved fig2_stock_prices.png")
 
@@ -210,7 +210,7 @@ ax.text(
 )
 
 plt.tight_layout()
-plt.savefig('output/figures/fig3_ev_market_share.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/figures/fig3_ev_market_share.png', dpi=150, bbox_inches='tight')
 plt.close()
 print("  saved fig3_ev_market_share.png")
 
@@ -264,7 +264,7 @@ ax.text(
 )
 
 plt.tight_layout()
-plt.savefig('output/figures/fig4_bev_vs_phev.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/figures/fig4_bev_vs_phev.png', dpi=150, bbox_inches='tight')
 plt.close()
 print("  saved fig4_bev_vs_phev.png")
 
@@ -344,7 +344,7 @@ ax.text(
 )
 
 plt.tight_layout()
-plt.savefig('output/figures/fig5_ev_stocks_global.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/figures/fig5_ev_stocks_global.png', dpi=150, bbox_inches='tight')
 plt.close()
 print("  saved fig5_ev_stocks_global.png")
 
@@ -431,8 +431,8 @@ ax.text(
 )
 
 plt.tight_layout()
-plt.savefig('output/figures/fig6_regression.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/figures/fig6_regression.png', dpi=150, bbox_inches='tight')
 plt.close()
 print(" saved fig6_regression.png")
 
-print("\nall figures saved to output/figures/")
+print("\nall figures saved to outputs/figures/")

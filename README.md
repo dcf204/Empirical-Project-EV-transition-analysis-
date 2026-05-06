@@ -78,6 +78,46 @@ See  `requirements.txt`
 | Company Financials | [Yahoo Finance](https://finance.yahoo.com) via yfinance | Annual revenue, gross profit and net income for Tesla, VW, BYD |
 | EV Sales & Adoption | [Our World in Data](https://ourworldindata.org) | IEA Global EV Outlook 2025 — BEV vs PHEV breakdown, absolute sales, market share, EV stocks on road |
 
+## Data Dictionary
+
+| File | Column | Type | Description |
+| --- | --- | --- | --- |
+| `google_trends_clean.csv` | `Date` | datetime | Year-month of observation (monthly) |
+| | `electric car` | int 0–100 | UK relative search interest for "electric car" |
+| | `hybrid car` | int 0–100 | UK relative search interest for "hybrid car" |
+| | `EV charging` | int 0–100 | UK relative search interest for "EV charging" |
+| | `Tesla` | int 0–100 | UK relative search interest for "Tesla" |
+| `company_stocks_clean.csv` | `Date` | datetime | Daily date of observation |
+| | `Company` | str | Company name (Tesla, Volkswagen, BYD) |
+| | `Ticker` | str | Stock ticker (TSLA, VWAGY, BYDDY) |
+| | `Close` | float | Raw daily closing price (local currency) |
+| | `Close_Normalised` | float | Price indexed to 100 at first trading day of 2018 |
+| | `Volume` | float | Daily trading volume |
+| `company_stocks_monthly.csv` | `YearMonth` | str | Calendar month (YYYY-MM) |
+| | `Company` | str | Company name |
+| | `Close_Mean` | float | Monthly average raw closing price |
+| | `Close_Norm_Mean` | float | Monthly average normalised price (base 100) |
+| | `Volume_Mean` | float | Monthly average trading volume |
+| `company_financials_clean.csv` | `Company` | str | Company name |
+| | `Year` | int | Financial year |
+| | `Total Revenue_Billions` | float | Annual revenue in billions (local currency) |
+| | `Gross Profit_Billions` | float | Annual gross profit in billions (local currency) |
+| | `Net Income_Billions` | float | Annual net income in billions (local currency) |
+| | `Revenue_Growth_Pct` | float | Year-on-year revenue growth rate (%) |
+| `ev_master_clean.csv` | `Country` | str | Country name |
+| | `Country_Code` | str | ISO 3-letter country code |
+| | `Year` | int | Calendar year |
+| | `Electric cars sold` | float | Absolute number of new EVs sold that year |
+| | `Electric cars` | float | EV share of new car sales (%) |
+| | `Non-electric cars` | float | Non-EV share of new car sales (%) |
+| | `Battery-electric` | float | BEV share of new car sales (%) |
+| | `Plug-in hybrid` | float | PHEV share of new car sales (%) |
+| | `Electric car stocks` | float | Total EVs on the road (cumulative) |
+| | `EV_Market_Share_Pct` | float | Calculated EV market share as % of total new car sales |
+
+> All Google Trends values are relative search indices — 100 = peak interest in the UK over the 2018–2024 period. Stock prices are in each company's local trading currency and are not cross-currency comparable in raw form; use `Close_Norm_Mean` for comparisons. Financials are similarly in local currency — use `Revenue_Growth_Pct` for cross-company comparisons.
+
+
 ## Outputs
 
 | Figure | File | Description |

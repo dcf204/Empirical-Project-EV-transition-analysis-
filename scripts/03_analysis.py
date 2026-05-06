@@ -6,7 +6,7 @@ import numpy as np
 import statsmodels.formula.api as smf
 import os
 
-os.makedirs('output/tables', exist_ok=True)
+os.makedirs('outputs/tables', exist_ok=True)
 
 print("loading data for regression")
 
@@ -63,8 +63,8 @@ model = smf.ols(
 print("\nregression results:")
 print(model.summary())
 
-# saving results to a text file in output/tables/
-with open('output/tables/regression_results.txt', 'w') as f:
+# saving results to a text file in outputs/tables/
+with open('outputs/tables/regression_results.txt', 'w') as f:
     f.write("OLS Regression: Does Search Interest Predict EV Adoption?\n\n")
     f.write("Dependent variable: UK EV Market Share (% of new car sales)\n")
     f.write("Independent variable: Google Search Interest for 'electric car' (lagged 1 year)\n")
@@ -85,7 +85,7 @@ with open('output/tables/regression_results.txt', 'w') as f:
         f.write("\n  interpretation: not statistically significant at the 5% level.\n")
         f.write("  search interest alone does not reliably predict adoption one year ahead.\n")
 
-print("\nsaved to output/tables/regression_results.txt")
+print("\nsaved to outputs/tables/regression_results.txt")
 print(f"\nsummary:")
 print(f"  coefficient: {model.params['Search_Interest_Lag1']:.4f}")
 print(f"  p-value: {model.pvalues['Search_Interest_Lag1']:.4f}")

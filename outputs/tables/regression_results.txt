@@ -10,7 +10,7 @@ Dep. Variable:     EV_Market_Share_Pct   R-squared:                       0.765
 Model:                             OLS   Adj. R-squared:                  0.706
 Method:                  Least Squares   F-statistic:                     13.03
 Date:                 Wed, 06 May 2026   Prob (F-statistic):             0.0226
-Time:                         02:59:37   Log-Likelihood:                -16.964
+Time:                         13:10:07   Log-Likelihood:                -16.964
 No. Observations:                    6   AIC:                             37.93
 Df Residuals:                        4   BIC:                             37.51
 Df Model:                            1                                         

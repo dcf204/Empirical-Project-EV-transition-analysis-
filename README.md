@@ -29,6 +29,7 @@ Empirical-Project-EV-transition-analysis-/
 ├── .gitignore            # Excludes venv, pycache and raw data files
 ├── Makefile              # Run entire pipeline with: make all
 ├── README.md             # Project documentation
+├── blog.html             # complete script for live blog
 └── requirements.txt      # Python dependencies
 ```
 

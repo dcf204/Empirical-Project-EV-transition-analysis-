@@ -63,7 +63,7 @@ python scripts/04_figures.py
 
 ## Requirements
 Requires Python 3.10+, pip, and the following packages (all installable via `pip install`):
-See  `r requirements.txt`
+See  `requirements.txt`
 - `pandas`, `numpy`, `matplotlib`, `scipy`, `statsmodels` for data processing and analysis
 - `pytrends`  Google Trends 
 - `yfinance` Yahoo Finance stock price data

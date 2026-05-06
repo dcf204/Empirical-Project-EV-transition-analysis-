@@ -54,3 +54,15 @@ See  `r requirements.txt`
 | Company Stock Prices | [Yahoo Finance](https://finance.yahoo.com) via yfinance | Daily closing prices for Tesla (TSLA), Volkswagen (VWAGY), BYD (BYDDY), 2018–2024 |
 | Company Financials | [Yahoo Finance](https://finance.yahoo.com) via yfinance | Annual revenue, gross profit and net income for Tesla, VW, BYD |
 | EV Sales & Adoption | [Our World in Data](https://ourworldindata.org) | IEA Global EV Outlook 2025 — BEV vs PHEV breakdown, absolute sales, market share, EV stocks on road |
+
+## Outputs
+
+| Figure | File | Description |
+|---|---|---|
+| 1 | `outputs/figures/fig1_uk_google_trends.png` | UK search interest for electric car, Tesla, EV charging and hybrid car 2018–2024 |
+| 2 | `outputs/figures/fig2_stock_prices.png` | Normalised stock prices for Tesla, Volkswagen and BYD indexed to 100 at start of 2018 |
+| 3 | `outputs/figures/fig3_ev_market_share.png` | EV share of new car sales by country 2010–2024 for Norway, China, UK, Germany and USA |
+| 4 | `outputs/figures/fig4_bev_vs_phev.png` | Global BEV vs PHEV breakdown as share of new car sales 2015–2024 |
+| 5 | `outputs/figures/fig5_ev_stocks_global.png` | Total electric vehicles on the road worldwide 2013–2024 |
+| 6 | `outputs/figures/fig6_regression.png` | OLS regression scatter plot: lagged search interest vs UK EV market share |
+| — | `outputs/tables/regression_results.txt` | Full OLS regression results including coefficients, p-values and R² |
